@@ -12,6 +12,7 @@ export class Product {
   providedIn: 'root'
 })
 export class CatalogService {
+  private viewingHistory:Product[] = []
   private cart:Product[] = []
 
   private catalog:Product[] = [
@@ -59,4 +60,15 @@ export class CatalogService {
   getProductById(productId:string) : Product {
     return this.catalog.filter(p => p.id == productId)[0]
   }
+
+  getViewingHistory() : Product[] {
+    return this.viewingHistory
+  }
+
+  addToViewingHistory(p:Product) {
+    if (!this.viewingHistory.find(item => item.id == p.id)) {
+      this.viewingHistory.push(p)
+    }
+  }
+
 }

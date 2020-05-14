@@ -4,3 +4,9 @@
 <p>Price: {{product.price}}</p>
 
 <button (click)="add()">Add to Cart</button>
+
+<p>Your viewing history</p>
+
+<a *ngFor="let vh of viewingHistory" href 
+    [routerLink]="['/product-details', vh.id]"><img class="history-image" [src]="vh.image" width="75px"/>
+</a>
