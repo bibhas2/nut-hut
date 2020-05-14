@@ -1,1 +1,6 @@
-<p>product-page works!</p>
+<h3>{{product.title}}</h3>
+<p><img [src]="product.image" width="250px"/></p>
+<p>{{product.description}}</p>
+<p>Price: {{product.price}}</p>
+
+<button (click)="add()">Add to Cart</button>

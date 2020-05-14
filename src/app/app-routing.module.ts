@@ -6,9 +6,9 @@ import { ShopcartPageComponent } from './shopcart-page/shopcart-page.component';
 
 
 const routes: Routes = [
-  {path: "/", component: HomePageComponent},
-  {path: "/product-details/:productId", component: ProductPageComponent},
-  {path: "/cart", component: ShopcartPageComponent},
+  {path: "", component: HomePageComponent},
+  {path: "product-details/:productId", component: ProductPageComponent},
+  {path: "cart", component: ShopcartPageComponent},
 ];
 
 @NgModule({

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product, CatalogService } from '../catalog.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-page',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit {
-
-  constructor() { }
+  product:Product = undefined
+  
+  constructor(
+    private route: ActivatedRoute, 
+    private catalogSvc:CatalogService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    //Lookup the productId URL parameter
+    let id = this.route.snapshot.params['productId']
+
+    //Retrieve the product by id
+    this.product = this.catalogSvc.getProductById(id)
   }
 
+  add() {
+    //Add the product to cart
+    this.catalogSvc.addToCart(this.product)
+
+    //Navigate to the cart page
+    this.router.navigate(["/cart"])
+  }
 }

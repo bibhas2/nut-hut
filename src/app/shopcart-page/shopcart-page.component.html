@@ -1,1 +1,13 @@
-<p>shopcart-page works!</p>
+<h3>Your Cart</h3>
+
+<div *ngIf="cart.length == 0">
+You don't have any item in your cart.
+</div>
+
+<div *ngFor="let p of cart">
+<p>{{p.title}}</p>
+<p><img [src]="p.image" width="100px"/></p>
+<hr/>
+</div>
+
+<button (click)="clear()">Clear Cart</button>
