@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogService, Product } from '../catalog.service';
+import { CatalogService, Product, CartItem } from '../catalog.service';
 
 @Component({
   selector: 'app-shopcart-page',
@@ -7,7 +7,7 @@ import { CatalogService, Product } from '../catalog.service';
   styleUrls: ['./shopcart-page.component.css']
 })
 export class ShopcartPageComponent implements OnInit {
-  cart:Product[] = []
+  cart:CartItem[] = []
 
   constructor(private catalogSvc:CatalogService) { }
 

@@ -1,9 +1,11 @@
 <h3>Our Products</h3>
 
-<div *ngFor="let p of catalog">
+<div *ngFor="let p of catalog" class="product">
     <b>{{p.title}}</b>
-    <p><img [src]="p.image" width="100px" /></p>
-    <p>Price: {{p.price}}</p>
+    <a href [routerLink]="['/product-details', p.id]">
+        <img [src]="p.image"/>
+    </a>
+    <div>Price: {{p.price}}</div>
 
     <a href [routerLink]="['/product-details', p.id]">View Details</a>
 </div>

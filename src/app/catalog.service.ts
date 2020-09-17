@@ -8,12 +8,17 @@ export class Product {
   image:string
 }
 
+export class CartItem {
+  constructor(public product:Product,
+    public quantity:number){}
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogService {
   private viewingHistory:Product[] = []
-  private cart:Product[] = []
+  private cart:CartItem[] = []
 
   private catalog:Product[] = [
     {
@@ -45,20 +50,32 @@ export class CatalogService {
     return this.catalog
   }
 
-  addToCart(p:Product) {
-    this.cart.push(p)
+  addToCart(productId:string, qty:number) {
+    const cartItem = this.cart.find(item => item.product.id == productId)
+
+    if (!cartItem) {
+      this.cart.push(new CartItem(this.getProductById(productId), qty))
+    } else {
+      cartItem.quantity += qty
+    }
   }
 
   clearCart() {
     this.cart = []
   }
 
-  getCart() : Product[] {
+  getCart() : CartItem[] {
     return this.cart
   }
 
   getProductById(productId:string) : Product {
-    return this.catalog.filter(p => p.id == productId)[0]
+    const p = this.catalog.find(p => p.id == productId)
+
+    if (p == undefined) {
+      throw `Invalid product ID: ${productId}`
+    }
+
+    return p
   }
 
   getViewingHistory() : Product[] {

@@ -34,7 +34,7 @@ export class ProductPageComponent implements OnInit {
 
   add() {
     //Add the product to cart
-    this.catalogSvc.addToCart(this.product)
+    this.catalogSvc.addToCart(this.product.id, 1)
 
     //Navigate to the cart page
     this.router.navigate(["/cart"])
