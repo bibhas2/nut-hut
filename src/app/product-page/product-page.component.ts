@@ -32,9 +32,18 @@ export class ProductPageComponent implements OnInit {
     })
   }
 
-  add() {
+  add(qtyTxt) {
     //Add the product to cart
-    this.catalogSvc.addToCart(this.product.id, 1)
+    const quantity = parseInt(qtyTxt.value)
+
+    if (isNaN(quantity)) {
+      alert("Please enter a valid quantity.")
+      qtyTxt.value = ""
+      
+      return
+    }
+
+    this.catalogSvc.addToCart(this.product.id, quantity)
 
     //Navigate to the cart page
     this.router.navigate(["/cart"])

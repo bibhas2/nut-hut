@@ -3,7 +3,8 @@
 <p>{{product.description}}</p>
 <p>Price: {{product.price}}</p>
 
-<button (click)="add()">Add to Cart</button>
+<input size="4" type="text" #qtyTxt/>
+<button (click)="add(qtyTxt)">Add to Cart</button>
 
 <p>Your viewing history</p>
 
