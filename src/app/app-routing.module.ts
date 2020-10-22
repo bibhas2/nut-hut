@@ -9,6 +9,8 @@ const routes: Routes = [
   {path: "", component: HomePageComponent},
   {path: "product-details/:productId", component: ProductPageComponent},
   {path: "cart", component: ShopcartPageComponent},
+  {path: "checkout", 
+    loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule)}
 ];
 
 @NgModule({
