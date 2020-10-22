@@ -20,9 +20,9 @@ export class ProductPageComponent implements OnInit {
     //Lookup the productId URL parameter
     // let id = this.route.snapshot.params['productId']
 
-    this.route.params.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
       //Retrieve the product by id
-      let id = params["productId"]
+      let id = params.get("productId")
       
       this.product = this.catalogSvc.getProductById(id)
 

@@ -8,6 +8,7 @@
 
 <p>Your viewing history</p>
 
-<a *ngFor="let vh of viewingHistory" href 
-    [routerLink]="['/product-details', vh.id]"><img class="history-image" [src]="vh.image" width="75px"/>
-</a>
+<img *ngFor="let vh of viewingHistory" 
+    class="history-image" 
+    [src]="vh.image" 
+    [routerLink]="['/product-details', vh.id]"/>
